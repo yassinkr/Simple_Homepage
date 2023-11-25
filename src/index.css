@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    width:100%;
+    height:100vh;
+    font-family: 'Poppins', sans-serif;
+    --background:#F2F9FE;
+    --title:rgba(34, 51, 68,0.98);
+    --description:rgba(34, 51, 68,0.6);
+    --imoji:rgba(34, 51, 68, 0.9);
+   
+}
+[data-theme="dark"]{
+    --background:rgba(34, 51, 68,0.98);
+    --title:#FFFFFF;
+    --description:#F2F9FE;
+    --imoji:#F2F9FE;
+    
+}
+
+.switch{
+    position:relative;
+    display: inline-block;
+    width:60px;
+    height:34px;
+    
+}
+
+.switch input{
+  opacity: 0;
+  height:0;
+  width:0;
+  
+}
+
+.slider{
+    position: absolute;
+    cursor: pointer;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:var(--title);
+  
+    transition: 0.4s;
+    border-radius: 34px;
+
+}
+
+.slider:before{
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+
+      transition: 0.4s;
+      border-radius: 50%;
+      background-color: #F2F9FE;
+     
+}
+input:checked + .slider:before{
+     transform: translateX(26px);
+     background-image: url('src/assets/Sun_fill.svg');
+
+}
+
+input +.slider:before{
+    background-image: url('src/assets/Moon_fill.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+input:checked + .slider{
+
+    background-color:var(--title) ;
+}
+.mooncss{
+    background-image: url('src/assets/Moon_fill_light.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+
+}
