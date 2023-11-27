@@ -94,8 +94,10 @@ const navbar = ({isToggled,onToggle , onToggleNav,isToggledNav}) => {
      </ul>
      </div>
      <div className={hamburger}>
-     <input  className='checkbox' onClick={handleToggle} type='checkbox'/>
-     </div>
+  <input className='checkbox' type='checkbox' id='menuToggle' />
+  <label className='checkbox-label' htmlFor='menuToggle' onClick={handleToggle}></label>
+</div>
+
      
 
     </nav>

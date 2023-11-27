@@ -1,11 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+body{
+    background-color:var(--background);
+    width:100%;
+    height:100%;
+}
 :root{
     width:100%;
-    height:100vh;
+    height:100%;
     font-family: 'Poppins', sans-serif;
+    background-color:var(--background);
     --background:#F2F9FE;
     --title:rgba(34, 51, 68,0.98);
     --description:rgba(34, 51, 68,0.6);
@@ -13,7 +18,7 @@
    
 }
 [data-theme="dark"]{
-    --background:rgba(34, 51, 68,0.98);
+    --background:rgba(34, 51, 68,1);
     --title:#FFFFFF;
     --description:#F2F9FE;
     --imoji:#F2F9FE;
@@ -64,12 +69,12 @@
 }
 input:checked + .slider:before{
      transform: translateX(26px);
-     background-image: url('src/assets/Sun_fill.svg');
+     background-image: url('./assets/Sun_fill.svg');
 
 }
 
 input +.slider:before{
-    background-image: url('src/assets/Moon_fill.svg');
+    background-image: url('./assets/Moon_fill.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
@@ -79,7 +84,7 @@ input:checked + .slider{
     background-color:var(--title) ;
 }
 .mooncss{
-    background-image: url('src/assets/Moon_fill_light.svg');
+    background-image: url('./assets/Moon_fill_light.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left;
@@ -108,13 +113,13 @@ nav .nav-btn{
 }
 .robot{
     width:45%;
-        height:60%;
-        background-image: url("src/assets/hero-image-simple-homepage.png");
+        background-image: url("./assets/hero-image-simple-homepage.png");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
         margin-top:3%;
         margin-left:3%;
+        padding: 5% 0%;
 }
 
 .descriptionStyle {
@@ -150,103 +155,128 @@ nav .nav-btn{
     }
 
 .resp_toggle{margin-left:37%}
- 
-@media only screen and (max-width: 641px) {
-    nav{
-        position: relative;
-        
-    }
-   nav .nav-btn{
-    position: absolute;
-    visibility: visible;
-    opacity: 1;
-    right:5%;
-    top:5%;
-    width:30px;
-    height:30px;
-    display:block;
-    background-image: url('./assets/hamburger.svg');
-    z-index: 1;
-   }
 
-   .checkbox{
-    z-index: 10;
-   }
-   nav .ul{
-    position: fixed;
-    top:0;
-    left:0;
-    height: 100%;
-    width: 30%;
-    display: flex;
-   
-    align-items: center;
-    gap: 20px;
-    background-color: var(--background);
-    transition: 1s;
-    transform: translateY(-100vh);
-   }
 
-   nav .ul.responsive_nav {
-    transform: translateY(0); /* Slide in when the class is present */
-    width:50%;
-    flex-direction: column;
-    gap: 0;
-    left:50%;
-    top: 40px;
-    gap: 50px;
-    font-size: 36px;
-    justify-content: flex-start;
-  }
-  li{
-    margin-left: 20%;
+.buttonStyle {
+  width: 40%;
+  height: 100%;
   
-    
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 16px;
+  padding: 3%;
 }
-   .nav-btn .close{
-    background-image: url('./assets/x.svg');
-
-
-   }
-   
-.hero{
-    display: flex;
-    flex-direction: column;
-}
-.robot{
-    order:1;
-    width:80%;
-    height:80%;
-    padding:50% 0%;
-}
-.text{
-    order:2;
-    width:80%;
-    height:50%;
-}
-
-.descriptionStyle {
-        
-    color:var(--description);
-    font-size:18px;
-    font-weight:bold;
-  };
-
-  .titleStyle{
-    color:var(--title);
-    font-size:34px;
-    font-weight:800;
-    padding:5% 0%;
-  };
-  .imojiStyle{
-    color:var(--imoji); 
-    font-size:14px;
-    font-weight:bold;
-    padding-top:5%;
-
-  }
-  :root{
-    width:100%;
-    height:100%;}
+@media only screen and (max-width: 641px) {
+    nav {
+      position: relative;
+    }
+  
+    nav .nav-btn {
+      position: absolute;
+      visibility: visible;
+      opacity: 1;
+      right: 5%;
+      top: 5%;
+      width: 30px;
+      height: 30px;
+      display: block;
+      z-index: 1;
+    }
+  
+    .checkbox {
+      display: none; /* Hide the checkbox */
+    }
+  
+    .checkbox-label {
+      position: absolute;
+      top: 30%;
+      left: 0;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      z-index: 2;
+      background-image: url('./assets/hamburger.svg');
+      background-size: contain;
+      background-position: center;
+    }
+  
+    nav .ul {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 30%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background-color: var(--background);
+      transition: 1s;
+      transform: translateY(-100vh);
+    }
+  
+    nav .ul.responsive_nav {
+      transform: translateY(0);
+      width: 50%;
+      flex-direction: column;
+      gap: 0;
+      left: 50%;
+      top: 40px;
+      gap: 50px;
+      font-size: 36px;
+      justify-content: flex-start;
+    }
+  
+    li {
+      margin-left: 20%;
+    }
+  
+    .close .checkbox-label{
+      background-image: url('./assets/x.svg');
+      width: 20px;
+      height: 20px;
+    }
+  
+    .hero {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .robot {
+      order: 1;
+      width: 80%;
+      height: 80%;
+      padding: 50% 0%;
+    }
+  
+    .text {
+      order: 2;
+      width: 80%;
+      height: 50%;
+    }
+  
+    .descriptionStyle {
+      color: var(--description);
+      font-size: 18px;
+      font-weight: bold;
+    }
+  
+    .titleStyle {
+      color: var(--title);
+      font-size: 34px;
+      font-weight: 800;
+      padding: 5% 0%;
+    }
+  
+    .imojiStyle {
+      color: var(--imoji);
+      font-size: 14px;
+      font-weight: bold;
+      padding-top: 5%;
+    }
+  
+    :root {
+      width: 100%;
+      height: 140vh;
+    }
   }
   
