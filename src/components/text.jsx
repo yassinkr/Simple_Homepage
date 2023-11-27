@@ -1,6 +1,7 @@
 import React from 'react'
 import Check from './check'
 import Button from './Button'
+
 const text = () => {
     const containerStyle = {
         width:'100%',
@@ -47,9 +48,9 @@ const text = () => {
       };
   return (
     <div style={containerStyle}>
-        <div style={imojiStyle}>😎  SIMPLE WAY TO COMMUNIVCATE</div>
-        <div style={titleStyle}>Actions for Accessibility in Design</div>
-        <div style={descriptionStyle}>The fastest way to build and deploy websites with resusable components.</div>
+        <div style={imojiStyle} class='imoji'>😎  SIMPLE WAY TO COMMUNIVCATE</div>
+        <div style={titleStyle} class='titleStyle'>Actions for Accessibility in Design</div>
+        <div style={descriptionStyle} class='descriptionStyle'>The fastest way to build and deploy websites with resusable components.</div>
         <div style={buttonsStyle}><Button text={"GET STARTED"} empty={false}/><Button text={"Get live demo"} empty={true}/></div>
         <div style={checksStyle}><Check text={"No credit card required"} /><Check text={"No software to install"}/></div>
     </div>

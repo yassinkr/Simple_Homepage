@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Mood.css'
+
 
 import classNames from 'classnames'
 const Mood = ({isToggled,onToggle}) => {
@@ -27,11 +27,12 @@ const Mood = ({isToggled,onToggle}) => {
             setDarkMode(); // Call setDarkMood when checked
         }
       };
+ 
 
       const sliderMoonClass = classNames('slider', { 'mooncss': isToggled });
-
+  
   return (
-    <div>
+    <div >
         <label  className='switch'>
         <input type='checkbox' checked={isToggled} onChange={handleToggle}/>
        <span className={sliderMoonClass}/>

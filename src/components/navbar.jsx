@@ -1,36 +1,72 @@
 import React from 'react'
+import { useRef } from 'react';
 import Mood from './Mood';
-const navbar = ({isToggled,onToggle}) => {
+
+import classNames from 'classnames'
+
+
+const navbar = ({isToggled,onToggle , onToggleNav,isToggledNav}) => {
     const containerStyle = {
         width:'100%',
         display:'flex',
         justifyContent:'center',
-        alinItems:'center', 
+        alignItems:'center', 
+      
+
+      };
+      const divStyle = {
+        width:'100%',
+        display:'flex',
+        justifyContent:'flex-end',
+        alignItems:'center', 
       
 
       };
 
+     const navref =useRef();
+     const ShowNavbar =() =>{
+     
+      navref.current.classList.add("responsive_nav");
+    }
+  const HideNavbar =() =>{
+    navref.current.classList.remove("responsive_nav");
+  }
+     
+  
+ 
+
+  const handleToggle = () => {
+      onToggleNav(!isToggledNav); // Toggle the state
+      if (!isToggledNav) {
+        ShowNavbar();
+      }
+      else {
+          
+        HideNavbar(); // Call setDarkMood when checked
+      }
+    };
+
+    const hamburger = classNames('nav-btn', { 'close': isToggledNav });
+
+     
+
+     
 
     const navStyle = {
         width:'90%',
         height:'100%',
         display:'flex',
-        justifyContent:'space-between',
+        justifyContent:'flex-start',
         alinItems:'center', 
         padding:'2%'
       };
       const ulStyle = {
-        width:'35%',
-        height:'100%',
-        display:'flex',
-        justifyContent:'space-between',
-        alinItems:'center', 
-        fontSize:'14px',
-        fontWeight:'bold',
+        
         color:'var(--description)'
       };
     
       const ilStyle = {
+        
         color:'var(--title)'
       };
   return (
@@ -48,15 +84,20 @@ const navbar = ({isToggled,onToggle}) => {
 <path d="M133.843 20.976C132.531 20.976 131.347 20.696 130.291 20.136C129.251 19.576 128.427 18.776 127.819 17.736C127.227 16.696 126.931 15.48 126.931 14.088C126.931 12.712 127.235 11.504 127.843 10.464C128.451 9.40799 129.283 8.59999 130.339 8.03999C131.395 7.47999 132.579 7.19999 133.891 7.19999C135.203 7.19999 136.387 7.47999 137.443 8.03999C138.499 8.59999 139.331 9.40799 139.939 10.464C140.547 11.504 140.851 12.712 140.851 14.088C140.851 15.464 140.539 16.68 139.915 17.736C139.307 18.776 138.467 19.576 137.395 20.136C136.339 20.696 135.155 20.976 133.843 20.976ZM133.843 17.424C134.627 17.424 135.291 17.136 135.835 16.56C136.395 15.984 136.675 15.16 136.675 14.088C136.675 13.016 136.403 12.192 135.859 11.616C135.331 11.04 134.675 10.752 133.891 10.752C133.091 10.752 132.427 11.04 131.899 11.616C131.371 12.176 131.107 13 131.107 14.088C131.107 15.16 131.363 15.984 131.875 16.56C132.403 17.136 133.059 17.424 133.843 17.424Z" fill="var(--title)"/>
 </svg>
 </div>
-     
-     <ul style={ulStyle}>
+     <div style={divStyle}>
+     <ul style={ulStyle} ref={navref}className='ul'>
         <li style={ilStyle}>About us</li>
         <li >Product</li>
         <li >Resource</li>
         <li >Contact</li>
+        <li className='resp_toggle'><div><Mood isToggled={isToggled} onToggle={onToggle}/></div></li>
      </ul>
+     </div>
+     <div className={hamburger}>
+     <input  className='checkbox' onClick={handleToggle} type='checkbox'/>
+     </div>
+     
 
-    <div><Mood isToggled={isToggled} onToggle={onToggle}/></div>
     </nav>
     </div>
   )
